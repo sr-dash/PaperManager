@@ -1,6 +1,6 @@
 {
   "name": "papermanager",
-  "version": "0.6.2",
+  "version": "0.6.3",
   "private": true,
   "description": "A formal, durable library for downloaded research literature",
   "author": "Soumyaranjan Dash",

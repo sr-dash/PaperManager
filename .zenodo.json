@@ -1,0 +1,23 @@
+{
+  "title": "PaperManager",
+  "upload_type": "software",
+  "description": "A desktop library for research papers: every PDF filed once under a meaningful name, identified by NASA ADS, DOI or arXiv, tagged, full-text searchable, and verifiable against its own records. Includes a PDF reader with annotations, references and citations from ADS, publisher-PDF replacement for arXiv copies, an inbox for new downloads, BibTeX export and manuscript bibliographies. Licensed under PolyForm Strict 1.0.0 (noncommercial use; no redistribution or changes).",
+  "creators": [{ "name": "Dash, Soumyaranjan" }],
+  "keywords": [
+    "reference manager",
+    "research papers",
+    "bibliography",
+    "PDF",
+    "NASA ADS",
+    "arXiv",
+    "astronomy",
+    "heliophysics"
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/sr-dash/PaperManager",
+      "relation": "isSupplementTo",
+      "scheme": "url"
+    }
+  ]
+}
