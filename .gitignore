@@ -1,0 +1,12 @@
+node_modules/
+out/
+dist/
+coverage/
+*.tsbuildinfo
+.DS_Store
+.env
+# scratch libraries created by tests or local runs
+.tmp/
+src/renderer/public/pdfjs/
+test-results/
+playwright-report/

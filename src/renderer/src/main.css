@@ -1,0 +1,168 @@
+@import 'tailwindcss';
+@import '@fontsource-variable/manrope';
+@import '@fontsource-variable/source-serif-4';
+@import '@fontsource-variable/roboto-mono';
+
+/*
+ * Tokens. Light mode is paper-white with ink-blue accents; dark mode is a warm graphite.
+ * Components use only these names.
+ */
+:root {
+  color-scheme: light dark;
+
+  --bg: #fcfcfb;
+  --bg-sidebar: #f5f5f2;
+  --bg-raised: #ffffff;
+  --bg-hover: #f0f0ec;
+  --bg-selected: #e8eef5;
+  --bg-selected-strong: #2b5c8a;
+  --bg-input: #ffffff;
+
+  --fg: #1d1d1f;
+  --fg-secondary: #5f6064;
+  --fg-tertiary: #6f7074;
+  --fg-on-accent: #ffffff;
+
+  --line: #ebebe6;
+  --line-strong: #d4d4ce;
+
+  --accent: #2b5c8a;
+  /* Fill for primary buttons: white text on it stays above 4.5:1 in both themes. */
+  --accent-solid: #2b5c8a;
+  --accent-soft: #e6eef6;
+  --warn: #9a5b00;
+  --warn-soft: #fbf0dc;
+  --ok: #1f7a5c;
+  --ok-soft: #e3f3ec;
+  --danger: #b42318;
+  --danger-soft: #fdecea;
+  --mark: #fff0a8;
+
+  --shadow: 0 1px 2px rgb(0 0 0 / 0.05), 0 10px 30px rgb(0 0 0 / 0.1);
+
+  /* Density: vertical padding of list rows (see [data-density] below). */
+  --row-py: 9px;
+}
+
+:root[data-density='compact'] {
+  --row-py: 5px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #18191b;
+    --bg-sidebar: #1c1e20;
+    --bg-raised: #212326;
+    --bg-hover: #25282b;
+    --bg-selected: #243546;
+    --bg-selected-strong: #3d74a8;
+    --bg-input: #1f2123;
+
+    --fg: #e8e6e1;
+    --fg-secondary: #a8aaae;
+    --fg-tertiary: #8f9296;
+    --fg-on-accent: #ffffff;
+
+    --line: #2a2d30;
+    --line-strong: #3a3e42;
+
+    --accent: #7fb0de;
+    --accent-solid: #3a6f9f;
+    --accent-soft: #1f3040;
+    --warn: #e0a64a;
+    --warn-soft: #3a2d17;
+    --ok: #5cc49a;
+    --ok-soft: #173229;
+    --danger: #f07a6e;
+    --danger-soft: #3a1f1c;
+    --mark: #5c4d12;
+
+    --shadow: 0 1px 2px rgb(0 0 0 / 0.4), 0 8px 24px rgb(0 0 0 / 0.45);
+  }
+}
+
+@theme inline {
+  --font-sans: 'Manrope Variable', -apple-system, 'Helvetica Neue', sans-serif;
+  --font-serif: 'Source Serif 4 Variable', 'Iowan Old Style', Georgia, serif;
+  --font-mono: 'Roboto Mono Variable', 'SF Mono', ui-monospace, Menlo, monospace;
+
+  --color-bg: var(--bg);
+  --color-sidebar: var(--bg-sidebar);
+  --color-raised: var(--bg-raised);
+  --color-hover: var(--bg-hover);
+  --color-selected: var(--bg-selected);
+  --color-selected-strong: var(--bg-selected-strong);
+  --color-input: var(--bg-input);
+  --color-fg: var(--fg);
+  --color-fg-2: var(--fg-secondary);
+  --color-fg-3: var(--fg-tertiary);
+  --color-on-accent: var(--fg-on-accent);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-accent-solid: var(--accent-solid);
+  --color-warn: var(--warn);
+  --color-warn-soft: var(--warn-soft);
+  --color-ok: var(--ok);
+  --color-ok-soft: var(--ok-soft);
+  --color-danger: var(--danger);
+  --color-danger-soft: var(--danger-soft);
+  --color-mark: var(--mark);
+}
+
+html {
+  font-size: 13px;
+}
+
+body {
+  font-family: var(--font-sans);
+}
+
+.drag {
+  -webkit-app-region: drag;
+}
+.no-drag {
+  -webkit-app-region: no-drag;
+}
+
+/* Quiet scrollbars that still show position. */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--line-strong);
+  border: 3px solid transparent;
+  background-clip: padding-box;
+  border-radius: 999px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+
+/* Toasts sit above the status bar. */
+.toast-stack {
+  bottom: 34px;
+}
+
+/* pdf.js viewer: the page canvas sits on the app background, not pdf.js's grey. */
+.pdf-scroll {
+  position: absolute;
+  inset: 0;
+  overflow: auto;
+  background: var(--bg-sidebar);
+}
+.pdf-scroll .pdfViewer .page {
+  border: none;
+  margin: 12px auto;
+  box-shadow: var(--shadow);
+}
+.pdf-scroll .pdfViewer .page .textLayer {
+  user-select: text;
+}

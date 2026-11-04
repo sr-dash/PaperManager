@@ -1,0 +1,5 @@
+out/
+dist/
+node_modules/
+src/renderer/public/pdfjs/
+package-lock.json
