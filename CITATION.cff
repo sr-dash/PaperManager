@@ -1,0 +1,24 @@
+cff-version: 1.2.0
+message: If you use PaperManager, please cite it as below.
+type: software
+title: PaperManager
+abstract: >-
+  A desktop library for research papers: every PDF filed once under a meaningful
+  name, identified by ADS, DOI or arXiv, tagged, full-text searchable, and verifiable
+  against its own records.
+authors:
+  - family-names: Dash
+    given-names: Soumyaranjan
+version: 0.6.2
+date-released: 2026-11-03
+repository-code: https://github.com/sr-dash/PaperManager
+license-url: https://polyformproject.org/licenses/strict/1.0.0
+keywords:
+  - reference manager
+  - research papers
+  - bibliography
+  - PDF
+  - NASA ADS
+  - arXiv
+  - astronomy
+  - heliophysics

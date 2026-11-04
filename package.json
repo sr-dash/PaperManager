@@ -1,9 +1,9 @@
 {
   "name": "papermanager",
-  "version": "0.6.1",
+  "version": "0.6.2",
   "private": true,
   "description": "A formal, durable library for downloaded research literature",
-  "author": "Soumyaranjan Dash <sdash@nso.edu>",
+  "author": "Soumyaranjan Dash",
   "license": "SEE LICENSE IN LICENSE",
   "type": "module",
   "engines": {

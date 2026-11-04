@@ -1,11 +1,46 @@
 # PaperManager
 
+[![Tests](https://github.com/sr-dash/PaperManager/actions/workflows/ci.yml/badge.svg)](https://github.com/sr-dash/PaperManager/actions/workflows/ci.yml)
+[![Release](https://img.shields.io/github/v/release/sr-dash/PaperManager?label=release)](https://github.com/sr-dash/PaperManager/releases)
+[![License: PolyForm Strict 1.0.0](https://img.shields.io/badge/license-PolyForm%20Strict%201.0.0-blue)](LICENSE)
+![Platform: macOS](https://img.shields.io/badge/platform-macOS-lightgrey)
+![Node.js 22.13+](https://img.shields.io/badge/node-%E2%89%A522.13-brightgreen)
+
 A durable, well-formed library for downloaded research literature: every PDF
 filed once under a meaningful name, identified by ADS / DOI / arXiv, tagged,
 full-text searchable, and verifiable against its own records.
 
 > **Status: 0.6.** A macOS desktop app (Electron, React and Tailwind) on a TypeScript
 > library core. The `pm` command line drives the same library.
+
+![The library: a two-line paper list with filter chips, and the details of the selected paper](docs/images/library.png)
+
+<table>
+  <tr>
+    <td width="50%"><img src="docs/images/reader.png" alt="Reading a paper, with its references and citations from ADS beside it"></td>
+    <td width="50%"><img src="docs/images/citations.png" alt="References and citations in the details pane, with papers already in the library marked"></td>
+  </tr>
+  <tr>
+    <td>Read with highlights, notes and drawings saved into the PDF; the paper's references and citations sit beside it, one click to add.</td>
+    <td>References and citations from ADS, with the papers you already have marked.</td>
+  </tr>
+  <tr>
+    <td><img src="docs/images/palette.png" alt="The command palette, finding papers and actions by a few letters"></td>
+    <td valign="top">
+      <b>Highlights</b>
+      <ul>
+        <li>PDFs filed once, as <code>Family_Year_Journal_Vol_Page.pdf</code></li>
+        <li>Metadata from ADS, Crossref and arXiv; BibTeX export</li>
+        <li>Full-text search with a filter language and smart collections</li>
+        <li>An Inbox that finds new papers in Downloads</li>
+        <li>arXiv copies swapped for the journal version when you get it</li>
+        <li>⌘K: jump to any paper, place or action</li>
+        <li>Manuscript bibliographies kept in step with the library</li>
+        <li>Your library is a plain folder you own</li>
+      </ul>
+    </td>
+  </tr>
+</table>
 
 ## Install
 
@@ -256,3 +291,20 @@ public research organisations and government institutions. You may not redistrib
 people to this repository. For anything else, ask the author.
 
 The open-source libraries it depends on keep their own licenses.
+
+## Author
+
+**Soumyaranjan Dash**
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/images/contact-dark.svg">
+  <img src="docs/images/contact-light.svg" alt="Author's email address, shown as an image">
+</picture>
+
+Questions, bug reports and requests: open an
+[issue](https://github.com/sr-dash/PaperManager/issues), or write to the address above.
+
+## Citing PaperManager
+
+If PaperManager helps your work, please cite it. GitHub's **Cite this repository**
+button (from [CITATION.cff](CITATION.cff)) gives the reference in APA and BibTeX.

@@ -608,7 +608,7 @@ function PreprintNotice({
         </Button>
         {onShowFiles && (
           <Button variant="ghost" onClick={onShowFiles}>
-            Files
+            Show files
           </Button>
         )}
       </div>
