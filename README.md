@@ -2,6 +2,7 @@
 
 [![Tests](https://github.com/sr-dash/PaperManager/actions/workflows/ci.yml/badge.svg)](https://github.com/sr-dash/PaperManager/actions/workflows/ci.yml)
 [![Release](https://img.shields.io/github/v/release/sr-dash/PaperManager?label=release)](https://github.com/sr-dash/PaperManager/releases)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23935225.svg)](https://doi.org/10.5281/zenodo.23935225)
 [![License: PolyForm Strict 1.0.0](https://img.shields.io/badge/license-PolyForm%20Strict%201.0.0-blue)](LICENSE)
 ![Platform: macOS](https://img.shields.io/badge/platform-macOS-lightgrey)
 ![Node.js 22.13+](https://img.shields.io/badge/node-%E2%89%A522.13-brightgreen)
@@ -308,3 +309,7 @@ Questions, bug reports and requests: open an
 
 If PaperManager helps your work, please cite it. GitHub's **Cite this repository**
 button (from [CITATION.cff](CITATION.cff)) gives the reference in APA and BibTeX.
+
+PaperManager is archived on Zenodo:
+[doi:10.5281/zenodo.23935225](https://doi.org/10.5281/zenodo.23935225) always points to
+the latest version, and each release has its own DOI on that page.
