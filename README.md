@@ -49,8 +49,8 @@ PaperManager is installed by building it on your own Mac, which takes a minute o
 An app built where it runs opens without macOS's "unidentified developer" warning, so
 no Apple signing is needed.
 
-1. Install [Node.js](https://nodejs.org) 22.13 or newer (the LTS installer). Git comes with Apple's command line tools: run `git` once and
-   macOS offers to install them.
+1. Install [Node.js](https://nodejs.org) 22.13 or newer (the LTS installer). Git comes
+   with Apple's command line tools: run `git` once and macOS offers to install them.
 2. Get the source and run the installer:
 
    ```bash
@@ -63,7 +63,9 @@ no Apple signing is needed.
    (Apple Silicon or Intel), puts it in `/Applications` (or `~/Applications` if that is
    not writable) and opens it. The first run downloads Electron, about 100 MB.
 
-3. To update later, from the same folder: `./scripts/install.sh --update`. It pulls the
+3. [Set up your ADS token](#set-up-your-ads-token) so lookups, references and citations
+   work.
+4. To update later, from the same folder: `./scripts/install.sh --update`. It pulls the
    latest commits, rebuilds, quits the running app and replaces it; the old copy goes to
    the Trash.
 
@@ -77,6 +79,81 @@ so update every Mac that shares a library.
 
 **Building on Linux:** `npm ci && npm run build && npx electron-builder --linux AppImage`
 produces `dist/PaperManager-<version>-<arch>.AppImage`.
+
+## Set up your ADS token
+
+PaperManager gets paper details, references and citations from
+[NASA ADS](https://ui.adsabs.harvard.edu). ADS needs a personal API token, which is
+free. Without one the app still works: DOIs are looked up through Crossref and arXiv ids
+through arXiv. But bibcodes, title matches, references and citations, Discover and the
+check for journal versions of preprints all need ADS.
+
+### 1. Get the token from ADS
+
+1. Go to [ui.adsabs.harvard.edu](https://ui.adsabs.harvard.edu) and sign in. If you have
+   no ADS account, choose **Sign Up**; it is free.
+2. Open the **Account** menu at the top right and choose **Settings**.
+3. In the list on the left, choose **API Token**
+   ([direct link](https://ui.adsabs.harvard.edu/user/settings/token)).
+4. Click **Generate a new key** if no token is shown yet. Copy the token: a string of
+   about 40 letters and digits.
+
+Treat the token like a password. Don't paste it into email, chat or a shared file. If
+it leaks, generate a new one on the same page; the old one stops working.
+
+### 2. Give it to PaperManager
+
+**In the app (recommended).**
+
+1. Open PaperManager and choose **Settings** at the bottom of the sidebar (or press
+   **⌘,**).
+2. In the **ADS** section, paste the token into the box and click **Save**.
+3. Click **Test**. "ADS accepted the token" means it works. The **Token** line now says
+   "Set, saved in PaperManager (encrypted with your keychain)".
+
+The token is encrypted with your macOS keychain and stored only on this Mac. It is
+never written anywhere in plain text, and it isn't part of your library folder, so set
+it again on each Mac you use. macOS may ask whether PaperManager can use its keychain
+item, "PaperManager Safe Storage", the first time you save the token, and again after
+you install a new version. Enter your Mac password and choose **Always Allow**.
+
+To replace the token, paste the new one and click **Save**. To delete it, click
+**Remove**.
+
+**In a file, for the `pm` command line as well.** The `pm` command line doesn't read
+the token saved in the app. If you also use `pm`, put the token in `~/.ads/dev_key`,
+which the app reads too. Copy the token, then run this in Terminal:
+
+```bash
+mkdir -p ~/.ads
+pbpaste > ~/.ads/dev_key
+chmod 600 ~/.ads/dev_key
+```
+
+`pbpaste` writes what you copied, so the token never appears on screen or in your
+shell history. `chmod 600` makes the file readable only by you. Restart PaperManager;
+Settings then says "Set, from ~/.ads/dev_key". Other ADS tools that use the same file
+pick it up too.
+
+**From an environment variable.** `ADS_API_TOKEN` (or `ADS_DEV_KEY`) is read as well,
+but only by programs started from a Terminal where it is set. An app opened from the
+Dock, Finder or Spotlight doesn't see variables set in `~/.zshrc`, so don't rely on this
+for everyday use. While it is set, it overrides the other two and the token box in
+Settings is disabled.
+
+When more than one is present, PaperManager uses the environment variable first, then
+the token saved in the app, then `~/.ads/dev_key`. Settings always shows which one is
+in use.
+
+### If it doesn't work
+
+- **Test reports an authorisation error:** the token was mistyped or has been
+  replaced. Copy it again from the ADS **API Token** page, then **Save** and **Test**.
+- **Settings says "Not set" after you created `~/.ads/dev_key`:** check that the file
+  holds only the token (`cat ~/.ads/dev_key`), then quit and reopen PaperManager.
+- **Lookups stop partway through a large import:** ADS limits how many requests a
+  token can make each day. Wait a day and try again; papers that couldn't be looked up
+  stay in **Needs review**, and **Look up again** in a paper's ⋯ menu retries it.
 
 ## Design
 
@@ -208,8 +285,7 @@ npm run build:mac    # .dmg (unsigned)
 The app opens `~/Documents/PaperManager`, or another folder chosen in Settings, or the one
 named by `PM_LIBRARY`.
 
-**ADS token.** Paste it in Settings, set `ADS_API_TOKEN`, or put it in `~/.ads/dev_key`. Without one, DOIs resolve via Crossref and
-arXiv ids via arXiv; bibcodes, title matches, references, citations and Discover need ADS.
+**ADS token.** See [Set up your ADS token](#set-up-your-ads-token).
 
 ## Command line
 
